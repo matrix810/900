@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Mohamed Mustafa 9.00</title>
+<style>
+body{background-image: url(ps4.png); background-size: 100% 100%  ; color:#FFF700;font-size:20px;text-align:center;margin:0;overflow:hidden;}
+.info{overflow: hidden;position: fixed;position: absolute;top: 45%;left: 50%;font-size: 35px;font-family: sans-serif;color: #FFF700;transform: translate(-50%, -50%);}
+</style>
+<script>
+if (window.applicationCache.status=='0'){window.location.replace("cache.html");}
+function awaitpl() {
+document.getElementById("loader").style.display = "none";
+document.getElementById("awaiting").style.display = "block";
+}
+function ghdone() {
+document.getElementById("loader").style.display = "none";
+document.getElementById("done").style.display = "block";
+}
+PLfile = "goldhen.bin";
+</script>
+<script src="int64.js"></script>
+<script src="rop.js"></script>
+<script src="kexploit.js"></script>
+<script src="webkit.js"></script>
+</head>
+<body>
+<div id="loader" class="info">.....جارٍ تحميل , يرجى الانتظار من 20 إلى 30 ثانية</div>
+<div id="awaiting" class="info" style="display:none;">يرجي قفل الجهاز و اعده تشغيل مره اخرة</div>
+<div id="done" class="info" style="display:none;">تم التفعيل الآن قم بإزالة محرك أقراص USB</div>
+<script>
+var req = new XMLHttpRequest();
+req.responseType = "arraybuffer";
+req.open("GET",PLfile,true);
+req.send();
+req.onreadystatechange=function(){
+if (req.readyState == 4){
+  var tmp0 = new Uint8Array(req.response.byteLength);
+  tmp0.set(new Uint8Array(req.response), 0);
+  var payload = new Uint32Array(tmp0);
+  ghPL = payload;
+  setTimeout(poc, 1500); 
+  }
+};
+</script>
+<br><br>
+<br>
+<div class="content" >
+ </div>
+</div>
+</div>
+</body>
+</html>
